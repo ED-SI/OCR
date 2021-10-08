@@ -2,43 +2,47 @@ package com.ufpa.edmilton.model;
 
 import java.io.File;
 
+import javax.imageio.ImageIO;
+
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
 public class Ocr {
 
-	//private String fullText;
+	private String fullText;
 	
-	/*
-	 * public Ocr() { this.fullText = ""; }
-	 */
-
-	public static void main(String[] args) throws TesseractException {
-		String inputFilePath = "D:/Downloads/ListaProva03Edmilton.pdf";
-
-		Tesseract tesseract = new Tesseract();
-		tesseract.setDatapath("C:/Program Files (x86)/Tesseract/tessdata");
-		tesseract.setLanguage("POR");
-
-		String fullText = tesseract.doOCR(new File(inputFilePath));
-		// this.fullText = fullText;
-
-		System.out.println(fullText);
-	}
+	
+	public Ocr() { this.fullText = ""; }
+	 
 
 	/*
-	 * public void convert(String path) throws TesseractException {
+	 * public static void main(String[] args) throws TesseractException { String
+	 * inputFilePath = "D:/Downloads/ListaProva03Edmilton.pdf";
 	 * 
-	 * ITesseract tesseract = new Tesseract();
+	 * Tesseract tesseract = new Tesseract();
 	 * tesseract.setDatapath("C:/Program Files (x86)/Tesseract/tessdata");
 	 * tesseract.setLanguage("POR");
 	 * 
-	 * String fullText = tesseract.doOCR(new File(path)); this.fullText = fullText;
+	 * String fullText = tesseract.doOCR(new File(inputFilePath)); // this.fullText
+	 * = fullText;
 	 * 
-	 * //System.out.println(fullText); }
-	 * 
-	 * public String getFullText() { return this.fullText; }
+	 * System.out.println(fullText); }
 	 */
+
+
+	public void convert(String path) throws TesseractException {
+		
+		Tesseract tesseract = new Tesseract();
+		tesseract.setDatapath("C:/Program Files (x86)/Tesseract/tessdata");
+		tesseract.setLanguage("POR");
+		ImageIO.scanForPlugins();
+		String fullText = tesseract.doOCR(new File(path)); 
+		this.fullText = fullText;
+
+		/* System.out.println(fullText); */ }
+
+	public String getFullText() { return this.fullText; }
+
 
 }

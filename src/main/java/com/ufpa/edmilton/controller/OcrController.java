@@ -81,7 +81,7 @@ public class OcrController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		Part part = request.getPart("fileUpload");
 		//String fileName = part.getSubmittedFileName();
 		//String path = getServletContext().getRealPath(fileName);
@@ -98,11 +98,11 @@ public class OcrController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String text = ocr.getFullText();
-		out.println(text);
-//		request.setAttribute("convertedText", ocr.getFullText());
-//		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
-//		rd.forward(request, response);
+		String extractedText = ocr.getFullText();
+		//out.println(text);
+		request.setAttribute("extractedText", extractedText);
+		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+		rd.forward(request, response);
 		}
 	
 	}

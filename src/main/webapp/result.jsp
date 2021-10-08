@@ -16,8 +16,8 @@
 <body>
 	<h1>Extracted Content:</h1>
 
-	<%= String text = (String) request.getAttribute("convertedText")%>
-	<%= out.println(text)  %>	
+	<% String text = (String) request.getAttribute("extractedText"); %>
+	<% out.println(text); %>	
 	
 	
 </body>
